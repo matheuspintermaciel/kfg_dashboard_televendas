@@ -1,0 +1,6 @@
+[theme]
+primaryColor = "#004B2C"            # Verde escuro (botão principal, destaque)
+backgroundColor = "#E5EEF3"         # Fundo principal
+secondaryBackgroundColor = "#FFFFFF" # Fundo secundário (cards, caixas)
+textColor = "#003A70"               # Azul escuro (título, texto principal)
+font = "sans serif"
