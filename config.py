@@ -1,35 +1,27 @@
 import base64
 import json
 from pathlib import Path
-from dotenv import load_dotenv
 import os
 
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.http import MediaFileUpload, MediaIoBaseDownload
 import io
-import os
 
-# Carrega variáveis do .env
-load_dotenv()
-
-# Usa Path para resolver caminhos
-BASE_CLIENTES = Path(os.getenv("BASE_CLIENTES")).resolve()
-# Usa Path para resolver caminhos
-BASE_HISTORICO = Path(os.getenv("BASE_HISTORICO")).resolve()
+import streamlit as st
 
 google_credentials = {
     "type": "service_account",
-    "project_id": os.getenv("GOOGLE_PROJECT_ID"),
-    "private_key_id": os.getenv("GOOGLE_PRIVATE_KEY_ID"),
-    "private_key": os.getenv("GOOGLE_PRIVATE_KEY"),
-    "client_email": os.getenv("GOOGLE_CLIENT_EMAIL"),
-    "client_id": os.getenv("GOOGLE_CLIENT_ID"),
-    "auth_uri": os.getenv("GOOGLE_AUTH_URI"),
-    "token_uri": os.getenv("GOOGLE_TOKEN_URI"),
-    "auth_provider_x509_cert_url": os.getenv("GOOGLE_AUTH_PROVIDER_X509_CERT_URL"),
-    "client_x509_cert_url": os.getenv("GOOGLE_CLIENT_X509_CERT_URL"),
-    "universe_domain": os.getenv("GOOGLE_UNIVERSE_DOMAIN")
+    "project_id": st.secrets["google"]["GOOGLE_PROJECT_ID"],
+    "private_key_id": st.secrets["google"]["GOOGLE_PRIVATE_KEY_ID"],
+    "private_key": st.secrets["google"]["GOOGLE_PRIVATE_KEY"],
+    "client_email": st.secrets["google"]["GOOGLE_CLIENT_EMAIL"],
+    "client_id": st.secrets["google"]["GOOGLE_CLIENT_ID"],
+    "auth_uri": st.secrets["google"]["GOOGLE_AUTH_URI"],
+    "token_uri": st.secrets["google"]["GOOGLE_TOKEN_URI"],
+    "auth_provider_x509_cert_url": st.secrets["google"]["GOOGLE_AUTH_PROVIDER_X509_CERT_URL"],
+    "client_x509_cert_url": st.secrets["google"]["GOOGLE_CLIENT_X509_CERT_URL"],
+    "universe_domain": st.secrets["google"]["GOOGLE_UNIVERSE_DOMAIN"]
 }
 
 class GoogleDriveClient:
