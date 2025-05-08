@@ -4,7 +4,7 @@ from collections import Counter
 from config import CARD_STYLES
 
 def create_status_cards(user_id):
-    CAMINHO_JSON = "data/clientes_atribuidos.json"
+    CAMINHO_JSON = "temp_data/clientes_atribuidos.json"
     
     """Cria cards interativos sem navegação, usando botões invisíveis sobre os cards"""
     # Estilos dos cards e posicionamento do botão
