@@ -1,8 +1,9 @@
 import os
 import pandas as pd
 from config import GoogleDriveClient
+import streamlit as st
 
-# @st.cache_data
+@st.cache_data
 def load_clientes():
     """Carrega os dados dos clientes a partir do Google Drive."""
     # Inicializa o cliente do Google Drive

@@ -32,17 +32,6 @@ google_credentials = {
     "universe_domain": os.getenv("GOOGLE_UNIVERSE_DOMAIN")
 }
 
-print(os.getenv("GOOGLE_PROJECT_ID"))
-print(os.getenv("GOOGLE_PRIVATE_KEY_ID"))
-print(os.getenv("GOOGLE_PRIVATE_KEY"))
-print(os.getenv("GOOGLE_CLIENT_EMAIL"))
-print(os.getenv("GOOGLE_CLIENT_ID"))
-print(os.getenv("GOOGLE_AUTH_URI"))
-print(os.getenv("GOOGLE_TOKEN_URI"))
-print(os.getenv("GOOGLE_AUTH_PROVIDER_X509_CERT_URL"))
-print(os.getenv("GOOGLE_CLIENT_X509_CERT_URL"))
-print(os.getenv("GOOGLE_UNIVERSE_DOMAIN"))
-
 class GoogleDriveClient:
     def __init__(self, credentials_path=None, credentials_dict=None):
         scopes = ['https://www.googleapis.com/auth/drive']
