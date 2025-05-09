@@ -1,26 +1,35 @@
 import streamlit as st
-from config import PAGE_CONFIG, CSS_STYLES, get_logo_base64
-
+PAGE_CONFIG = {
+    "page_title": "Home",
+    "page_icon": "📝",
+    "layout": "wide",
+    "initial_sidebar_state": "expanded"
+}
 st.set_page_config(**PAGE_CONFIG)
 
 from data.atribuir_clientes import atribuir_clientes
 from home import main as home_main
 from login import login
-from data.clientes import load_clientes
+from data.load import load_data
 
 def app():
+    
+    # Carregar os dados uma única vez, se ainda não estiver carregado
+    if 'dados_clientes' not in st.session_state:
+        print("Carregando dados")
+        dados_clientes, dados_historico = load_data()
+        atribuir_clientes()
+        st.session_state['dados_clientes'] = dados_clientes
+        st.session_state['dados_historico'] = dados_historico
+
+    dados = st.session_state['dados_clientes']
+
     # Verifica se o usuário está logado
     if "user_id" not in st.session_state:
         print("user_id")
-        login()  # Chama a função de login, caso o usuário não esteja logado
+        login()
     else:
-        atribuir_clientes()
-        # Carregar os dados uma única vez, se ainda não estiver carregado
-        if 'dados_clientes' not in st.session_state:
-            st.session_state['dados_clientes'] = load_clientes()  # Carrega os dados de clientes uma vez
-        dados = st.session_state['dados_clientes']  # Acessa os dados carregados
-        print("Carregando Home")
-        home_main(dados)  # Exibe a home com os filtros baseados no ID
+        home_main(dados)  # Chama a função de login, caso o usuário não esteja logado
 
 if __name__ == "__main__":
     app()

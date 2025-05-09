@@ -1,23 +1,119 @@
 import base64
+import json
 from pathlib import Path
-from dotenv import load_dotenv
 import os
+from datetime import datetime
 
-# Carrega variáveis do .env
-load_dotenv()
+from google.oauth2 import service_account
+from googleapiclient.discovery import build
+from googleapiclient.http import MediaFileUpload, MediaIoBaseDownload
+import io
 
-# Usa Path para resolver caminhos
-BASE_CLIENTES = Path(os.getenv("BASE_CLIENTES")).resolve()
-# Usa Path para resolver caminhos
-BASE_HISTORICO = Path(os.getenv("BASE_HISTORICO")).resolve()
+import streamlit as st
 
-# Configurações da página
-PAGE_CONFIG = {
-    "page_title": "Home",
-    "page_icon": "📝",
-    "layout": "wide",
-    "initial_sidebar_state": "expanded"
-}
+# from dotenv import load_dotenv
+# load_dotenv()
+
+google_credentials = {
+     "type": "service_account",
+     "project_id": st.secrets["google"]["GOOGLE_PROJECT_ID"],
+     "private_key_id": st.secrets["google"]["GOOGLE_PRIVATE_KEY_ID"],
+     "private_key": st.secrets["google"]["GOOGLE_PRIVATE_KEY"],
+     "client_email": st.secrets["google"]["GOOGLE_CLIENT_EMAIL"],
+     "client_id": st.secrets["google"]["GOOGLE_CLIENT_ID"],
+     "auth_uri": st.secrets["google"]["GOOGLE_AUTH_URI"],
+     "token_uri": st.secrets["google"]["GOOGLE_TOKEN_URI"],
+     "auth_provider_x509_cert_url": st.secrets["google"]["GOOGLE_AUTH_PROVIDER_X509_CERT_URL"],
+     "client_x509_cert_url": st.secrets["google"]["GOOGLE_CLIENT_X509_CERT_URL"],
+     "universe_domain": st.secrets["google"]["GOOGLE_UNIVERSE_DOMAIN"]
+ }
+
+# google_credentials = {
+#     "type": "service_account",
+#     "project_id": os.getenv("GOOGLE_PROJECT_ID"),
+#     "private_key_id": os.getenv("GOOGLE_PRIVATE_KEY_ID"),
+#     "private_key": os.getenv("GOOGLE_PRIVATE_KEY"),
+#     "client_email": os.getenv("GOOGLE_CLIENT_EMAIL"),
+#     "client_id": os.getenv("GOOGLE_CLIENT_ID"),
+#     "auth_uri": os.getenv("GOOGLE_AUTH_URI"),
+#     "token_uri": os.getenv("GOOGLE_TOKEN_URI"),
+#     "auth_provider_x509_cert_url": os.getenv("GOOGLE_AUTH_PROVIDER_X509_CERT_URL"),
+#     "client_x509_cert_url": os.getenv("GOOGLE_CLIENT_X509_CERT_URL"),
+#     "universe_domain": os.getenv("GOOGLE_UNIVERSE_DOMAIN")
+# }
+
+
+CAMINHO_JSON = "data/clientes_atribuidos.json"
+
+class GoogleDriveClient:
+    def __init__(self, credentials_path=None, credentials_dict=None):
+        scopes = ['https://www.googleapis.com/auth/drive']
+
+        # Se não vier por parâmetro, tenta pegar do ambiente
+        if credentials_dict is None and credentials_path is None:
+            try:
+                credentials_dict = google_credentials
+                print(f"{credentials_dict}")
+            except json.JSONDecodeError:
+                raise ValueError("GOOGLE_DRIVE_CREDENTIALS não é um JSON válido.")
+
+        if credentials_dict:
+            self.creds = service_account.Credentials.from_service_account_info(credentials_dict, scopes=scopes)
+        elif credentials_path:
+            self.creds = service_account.Credentials.from_service_account_file(credentials_path, scopes=scopes)
+        else:
+            raise ValueError("Você deve fornecer credentials_path, credentials_dict ou setar GOOGLE_DRIVE_CREDENTIALS.")
+
+        self.service = build('drive', 'v3', credentials=self.creds)
+
+    def upload_file(self, file_path, folder_id=None):
+        timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+        
+        # Criando o nome do arquivo com timestamp
+        file_name_with_timestamp = f"{os.path.basename(file_path).split('.')[0]}_{timestamp}.json"
+        
+        file_metadata = {
+            'name': file_name_with_timestamp,
+            'parents': [folder_id] if folder_id else []
+        }
+        media = MediaFileUpload(file_path, resumable=True)
+        uploaded_file = self.service.files().create(
+            body=file_metadata,
+            media_body=media,
+            fields='id, name'
+        ).execute()
+
+        return uploaded_file
+
+    def download_file(self, file_id, destination_path):
+        request = self.service.files().get_media(fileId=file_id)
+        fh = io.FileIO(destination_path, 'wb')
+        downloader = MediaIoBaseDownload(fh, request)
+        done = False
+        while not done:
+            status, done = downloader.next_chunk()
+        return destination_path
+
+    def list_files(self, folder_id=None, query=None, mime_type=None):
+        q_parts = []
+        if folder_id:
+            q_parts.append(f"'{folder_id}' in parents")
+        if mime_type:
+            q_parts.append(f"mimeType='{mime_type}'")
+        if query:
+            q_parts.append(query)
+
+        query_string = ' and '.join(q_parts)
+        results = self.service.files().list(
+            q=query_string,
+            pageSize=100,
+            fields="files(id, name, mimeType)"
+        ).execute()
+        return results.get('files', [])
+
+    def delete_file(self, file_id):
+        self.service.files().delete(fileId=file_id).execute()
+        return True
 
 # Caminhos de arquivos
 ASSETS_PATH = Path("assets")

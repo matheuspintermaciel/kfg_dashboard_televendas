@@ -7,7 +7,7 @@ import pandas as pd
 import json
 import os
 
-CAMINHO_JSON = "data/clientes_atribuidos.json"
+from data.load import CAMINHO_JSON
 
 def main(dados):
     # Verificando o ID do usuário logado

@@ -2,6 +2,7 @@ import streamlit as st
 import json
 import os
 from data.atribuir_clientes import atribuir_clientes
+from data.load import load_data
 
 ARQUIVO_ATRIBUICAO = "data/clientes_atribuidos.json"
 USUARIOS_PERMITIDOS = ["Franciele", "Julia", "Erica"]
@@ -23,11 +24,4 @@ def login():
             else:
                 st.session_state["user_id"] = usuario
                 st.session_state["user_name"] = usuario
-
-                if not os.path.exists(ARQUIVO_ATRIBUICAO):
-                    st.info("📁 Arquivo de atribuições de clientes não encontrado. Criando novo arquivo...")
-                    atribuir_clientes()
-                else:
-                    st.success(f"✅ Bem-vinda, {usuario}!")
-
                 st.rerun()
