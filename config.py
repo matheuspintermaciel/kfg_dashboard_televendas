@@ -2,6 +2,7 @@ import base64
 import json
 from pathlib import Path
 import os
+from datetime import datetime
 
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
@@ -10,19 +11,39 @@ import io
 
 import streamlit as st
 
+# from dotenv import load_dotenv
+# load_dotenv()
+
 google_credentials = {
-    "type": "service_account",
-    "project_id": st.secrets["google"]["GOOGLE_PROJECT_ID"],
-    "private_key_id": st.secrets["google"]["GOOGLE_PRIVATE_KEY_ID"],
-    "private_key": st.secrets["google"]["GOOGLE_PRIVATE_KEY"],
-    "client_email": st.secrets["google"]["GOOGLE_CLIENT_EMAIL"],
-    "client_id": st.secrets["google"]["GOOGLE_CLIENT_ID"],
-    "auth_uri": st.secrets["google"]["GOOGLE_AUTH_URI"],
-    "token_uri": st.secrets["google"]["GOOGLE_TOKEN_URI"],
-    "auth_provider_x509_cert_url": st.secrets["google"]["GOOGLE_AUTH_PROVIDER_X509_CERT_URL"],
-    "client_x509_cert_url": st.secrets["google"]["GOOGLE_CLIENT_X509_CERT_URL"],
-    "universe_domain": st.secrets["google"]["GOOGLE_UNIVERSE_DOMAIN"]
-}
+     "type": "service_account",
+     "project_id": st.secrets["google"]["GOOGLE_PROJECT_ID"],
+     "private_key_id": st.secrets["google"]["GOOGLE_PRIVATE_KEY_ID"],
+     "private_key": st.secrets["google"]["GOOGLE_PRIVATE_KEY"],
+     "client_email": st.secrets["google"]["GOOGLE_CLIENT_EMAIL"],
+     "client_id": st.secrets["google"]["GOOGLE_CLIENT_ID"],
+     "auth_uri": st.secrets["google"]["GOOGLE_AUTH_URI"],
+     "token_uri": st.secrets["google"]["GOOGLE_TOKEN_URI"],
+     "auth_provider_x509_cert_url": st.secrets["google"]["GOOGLE_AUTH_PROVIDER_X509_CERT_URL"],
+     "client_x509_cert_url": st.secrets["google"]["GOOGLE_CLIENT_X509_CERT_URL"],
+     "universe_domain": st.secrets["google"]["GOOGLE_UNIVERSE_DOMAIN"]
+ }
+
+# google_credentials = {
+#     "type": "service_account",
+#     "project_id": os.getenv("GOOGLE_PROJECT_ID"),
+#     "private_key_id": os.getenv("GOOGLE_PRIVATE_KEY_ID"),
+#     "private_key": os.getenv("GOOGLE_PRIVATE_KEY"),
+#     "client_email": os.getenv("GOOGLE_CLIENT_EMAIL"),
+#     "client_id": os.getenv("GOOGLE_CLIENT_ID"),
+#     "auth_uri": os.getenv("GOOGLE_AUTH_URI"),
+#     "token_uri": os.getenv("GOOGLE_TOKEN_URI"),
+#     "auth_provider_x509_cert_url": os.getenv("GOOGLE_AUTH_PROVIDER_X509_CERT_URL"),
+#     "client_x509_cert_url": os.getenv("GOOGLE_CLIENT_X509_CERT_URL"),
+#     "universe_domain": os.getenv("GOOGLE_UNIVERSE_DOMAIN")
+# }
+
+
+CAMINHO_JSON = "data/clientes_atribuidos.json"
 
 class GoogleDriveClient:
     def __init__(self, credentials_path=None, credentials_dict=None):
@@ -46,8 +67,13 @@ class GoogleDriveClient:
         self.service = build('drive', 'v3', credentials=self.creds)
 
     def upload_file(self, file_path, folder_id=None):
+        timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
+        
+        # Criando o nome do arquivo com timestamp
+        file_name_with_timestamp = f"{os.path.basename(file_path).split('.')[0]}_{timestamp}.json"
+        
         file_metadata = {
-            'name': os.path.basename(file_path),
+            'name': file_name_with_timestamp,
             'parents': [folder_id] if folder_id else []
         }
         media = MediaFileUpload(file_path, resumable=True)
@@ -56,6 +82,7 @@ class GoogleDriveClient:
             media_body=media,
             fields='id, name'
         ).execute()
+
         return uploaded_file
 
     def download_file(self, file_id, destination_path):
@@ -87,14 +114,6 @@ class GoogleDriveClient:
     def delete_file(self, file_id):
         self.service.files().delete(fileId=file_id).execute()
         return True
-
-# Configurações da página
-PAGE_CONFIG = {
-    "page_title": "Home",
-    "page_icon": "📝",
-    "layout": "wide",
-    "initial_sidebar_state": "expanded"
-}
 
 # Caminhos de arquivos
 ASSETS_PATH = Path("assets")

@@ -3,19 +3,8 @@ import streamlit as st
 import pandas as pd
 import json
 import os
-
-from data.clientes import load_clientes
-from data.historico_compras import load_historico
-
-CAMINHO_JSON = "data/clientes_atribuidos.json"
-
-@st.cache_data
-def load_data():
-    dados_clientes = load_clientes()
-    dados_historico = load_historico()
-    return dados_clientes, dados_historico
-
-dados_clientes, dados_historico = load_data()
+from data.load import dados_clientes, dados_historico, CAMINHO_JSON
+from config import GoogleDriveClient
 
 # Função para atualizar status no JSON
 def atualizar_status_cliente(user_id, codigo_loja, status, info_extra=None):
@@ -55,9 +44,19 @@ def atualizar_status_cliente(user_id, codigo_loja, status, info_extra=None):
         return
 
     # Salvar as alterações no arquivo JSON
-    with open(CAMINHO_JSON, "w") as f:
-        json.dump(data_json, f, indent=4)
+    try:
+        with open(CAMINHO_JSON, "w") as f:
+            json.dump(data_json, f, indent=4)
         print(f"[INFO] Dados salvos no arquivo JSON com sucesso.")
+
+        # Agora, faz o upload do arquivo JSON atualizado para o Google Drive
+        gdrive_client = GoogleDriveClient()
+        gdrive_client.upload_file(CAMINHO_JSON, folder_id='1SGB1HO0MQxUoJcBAEicTmxxE4hg_y47E')
+        print(f"[INFO] Enviado para o Google Drive com sucesso.")
+
+    except Exception as e:
+        print(f"[ERROR] Ocorreu um erro ao salvar ou enviar o arquivo JSON: {e}")
+
 
     st.success("Status atualizado com sucesso!")
     st.rerun()

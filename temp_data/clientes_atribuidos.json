@@ -1,0 +1,946 @@
+{
+    "2025-05-09": {
+        "Franciele": [
+            {
+                "codigo_loja": "07838947_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "07347500_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "82647165_0039",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "08470869_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "49084070_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "49821163_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "24868015_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "04634377_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "19325969_0051",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "82647165_0041",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "45137879_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "51554603_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "30598529_0023",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "00906250_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "44467712_0001",
+                "status": "Proximidade de Fechamento"
+            }
+        ],
+        "Julia": [
+            {
+                "codigo_loja": "35364131_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "37164741_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "18958064_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "20978588_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "37644558_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "28942161_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "02025038_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "28338541_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "50366374_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "41329482_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "05342890_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "54602268_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "09688158_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "09464426_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "03535599_0001",
+                "status": "Aguardando"
+            }
+        ],
+        "Erica": [
+            {
+                "codigo_loja": "34716657_0004",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "27344036_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "83709493_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "30761912_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "56430526_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "08691828_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "20558548_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "06128069_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "41199701_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "21958440_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "01598647_0003",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "03040543_0005",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "01598647_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "35317316_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "26266891_0001",
+                "status": "Proximidade de Fechamento"
+            }
+        ]
+    },
+    "2025-05-10": {
+        "Franciele": [
+            {
+                "codigo_loja": "83532713_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "20856002_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "13730568_0008",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "21304313_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "32600269_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "19325969_0026",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "05744260_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "43183004_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "13730568_0003",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "50816864_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "04639230_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "49121994_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "45495448_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "10768413_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "41923985_0001",
+                "status": "Proximidade de Fechamento"
+            }
+        ],
+        "Julia": [
+            {
+                "codigo_loja": "53470933_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "82647165_0025",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "57015654_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "40502100_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "85327724_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "36039727_9727",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "33030986_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "39704765_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "33508154_0013",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "31714482_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "53781952_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "06999467_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "50088702_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "07303278_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "10474789_0001",
+                "status": "Aguardando"
+            }
+        ],
+        "Erica": [
+            {
+                "codigo_loja": "13701949_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "30598529_0019",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "32255107_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "08680653_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "30598529_0017",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "19325969_0040",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "37855247_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "20099590_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "58138747_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "10768389_0016",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "12188779_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "01938690_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "30598529_0025",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "01292262_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "00100945_0001",
+                "status": "Proximidade de Fechamento"
+            }
+        ]
+    },
+    "2025-05-11": {
+        "Franciele": [
+            {
+                "codigo_loja": "03722755_0003",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "82557737_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "73217168_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "23179753_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "50349890_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "01969594_0001",
+                "status": "Venda Conclu\u00edda",
+                "valor_fechado": 11111.0,
+                "observacoes": "egegaeg"
+            },
+            {
+                "codigo_loja": "19325969_0020",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "40477330_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "28833493_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "45635571_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "10279456_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "17989340_0003",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "53800649_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "20523869_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "39277031_0001",
+                "status": "Aguardando"
+            }
+        ],
+        "Julia": [
+            {
+                "codigo_loja": "46206780_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "51320402_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "17525746_0002",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "31971171_0002",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "14911784_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "07788167_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "08263971_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "19325969_0010",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "54739828_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "02895335_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "44273261_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "82647165_0023",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "44359926_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "76867894_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "81019309_0001",
+                "status": "Proximidade de Fechamento"
+            }
+        ],
+        "Erica": [
+            {
+                "codigo_loja": "39801305_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "31228036_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "01138493_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "58492606_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "86530003_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "11763306_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "19325969_0043",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "27700037_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "54318205_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "34058911_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "30623981_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "17165334_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "38422470_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "19828242_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "09590288_0001",
+                "status": "Proximidade de Fechamento"
+            }
+        ]
+    },
+    "2025-05-12": {
+        "Franciele": [
+            {
+                "codigo_loja": "09563466_0002",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "30598529_0034",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "09008682_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "19325969_0064",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "82647165_0032",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "76377241_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "39531529_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "10768389_0023",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "03786318_0001",
+                "status": "Venda Perdida",
+                "motivo_perda": "Pre\u00e7o",
+                "detalhes": "aegegaegaeg"
+            },
+            {
+                "codigo_loja": "82647165_0022",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "45593187_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "09563466_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "51449070_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "19325969_0061",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "19325969_0049",
+                "status": "Proximidade de Fechamento"
+            }
+        ],
+        "Julia": [
+            {
+                "codigo_loja": "05343547_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "43892933_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "04930687_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "54774874_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "25454735_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "18622056_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "20985647_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "21398251_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "29992875_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "80985690_0002",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "19325969_0048",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "10488909_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "05477374_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "28207159_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "83494427_0001",
+                "status": "Proximidade de Fechamento"
+            }
+        ],
+        "Erica": [
+            {
+                "codigo_loja": "30116452_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "34541286_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "40191662_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "52268346_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "54115154_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "80649007_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "07107909_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "21491658_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "27040650_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "18179332_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "09480236_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "21743807_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "30598529_0004",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "82991332_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "82113515_0001",
+                "status": "Aguardando"
+            }
+        ]
+    },
+    "2025-05-13": {
+        "Franciele": [
+            {
+                "codigo_loja": "02818408_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "49135228_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "42955091_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "33508154_0016",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "16662641_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "33099799_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "79838751_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "27971288_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "14218662_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "51482056_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "42842612_0002",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "44016045_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "37720047_0002",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "30598529_0029",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "52572729_0001",
+                "status": "Proximidade de Fechamento"
+            }
+        ],
+        "Julia": [
+            {
+                "codigo_loja": "41490124_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "31545180_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "13730568_0007",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "30598529_0010",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "37680783_0002",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "17030821_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "10768389_0008",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "28830954_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "20986692_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "52923234_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "10768389_0004",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "30598529_0007",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "37631183_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "12573013_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "19325969_0042",
+                "status": "Proximidade de Fechamento"
+            }
+        ],
+        "Erica": [
+            {
+                "codigo_loja": "03000252_0006",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "46895120_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "04216144_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "08722954_0002",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "43873646_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "26464715_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "58538154_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "30598529_0031",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "19325969_0034",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "05461274_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "12295612_0002",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "80147275_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "07310233_0001",
+                "status": "Aguardando"
+            },
+            {
+                "codigo_loja": "35622079_0001",
+                "status": "Proximidade de Fechamento"
+            },
+            {
+                "codigo_loja": "18995161_0001",
+                "status": "Proximidade de Fechamento"
+            }
+        ]
+    }
+}
