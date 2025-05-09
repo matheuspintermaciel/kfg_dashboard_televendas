@@ -3,7 +3,7 @@ from data.historico_compras import load_historico
 from data.clientes import load_clientes
 import streamlit as st
 
-@st.cache_data
+@st.cache_resource
 def load_data():
     dados_clientes = load_clientes()
     dados_historico = load_historico()
