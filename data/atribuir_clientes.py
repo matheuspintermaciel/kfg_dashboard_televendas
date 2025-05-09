@@ -104,10 +104,6 @@ def atribuir_clientes():
     with open(CAMINHO_JSON, "w") as f:
         json.dump(clientes_atribuidos, f, indent=4)
 
-    agora_str = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-    nome_arquivo_novo = f"clientes_atribuidos_{agora_str}.json"
-    
-    print(f"⬆️ Fazendo upload para o Google Drive: {nome_arquivo_novo}")
-    gdrive_client.upload_file(CAMINHO_JSON, pasta_atribuidos, nome_arquivo_novo)
+    gdrive_client.upload_file(CAMINHO_JSON, pasta_atribuidos)
 
     print("✅ Atribuição concluída com sucesso!")
