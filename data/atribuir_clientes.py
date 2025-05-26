@@ -93,6 +93,9 @@ def atribuir_clientes():
         print(f"📅 Atribuindo clientes para o dia: {data_str}")
 
         for usuario in USUARIOS:
+            if len(clientes_disponiveis) < CLIENTES_POR_USUARIO:
+                break
+
             amostra = clientes_disponiveis.sample(n=CLIENTES_POR_USUARIO, random_state=random.randint(0, 9999))
             clientes_disponiveis = clientes_disponiveis.drop(amostra.index)
             clientes_atribuidos[data_str][usuario] = amostra.to_dict(orient='records')
