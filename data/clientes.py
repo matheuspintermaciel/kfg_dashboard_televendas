@@ -23,7 +23,8 @@ def load_clientes():
     # Lista os arquivos da pasta e verifica se o desejado está lá
     arquivos = gdrive_client.list_files(folder_id=pasta_clientes)
     arquivo_encontrado = next((f for f in arquivos if f['name'] == base_clientes), None)
-
+    print(f"Procurando arquivo: {base_clientes} na pasta {pasta_clientes}")
+    print(f"Arquivos encontrados: {[f['name'] for f in arquivos]}")
     if arquivo_encontrado:
         file_id = arquivo_encontrado['id']
         gdrive_client.download_file(file_id, file_path)
