@@ -5,7 +5,7 @@ from data.atribuir_clientes import atribuir_clientes
 from data.load import load_data
 
 ARQUIVO_ATRIBUICAO = "data/clientes_atribuidos.json"
-USUARIOS_PERMITIDOS = ["Franciele", "Julia", "Erica"]
+USUARIOS_PERMITIDOS = ["Franciele", "Julia", "Erica","Laysa", "Lenice"]
 
 def login():
     col1, col2, col3 = st.columns([1, 4, 1])  # Layout centralizado com 6 partes

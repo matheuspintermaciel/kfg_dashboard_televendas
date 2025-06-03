@@ -2,13 +2,13 @@ import pandas as pd
 import random
 import json
 import os
-from datetime import date, timedelta, datetime
+from datetime import date, timedelta
 from config import GoogleDriveClient
 
 # ==== CONFIGURAÇÕES ====
 CAMINHO_CLIENTES = os.path.join("temp_data", "clientes_dash_televendas.parquet")
 CAMINHO_JSON = os.path.join("temp_data", "clientes_atribuidos.json")
-USUARIOS = ["Franciele", "Julia", "Erica"]
+USUARIOS = ["Franciele", "Julia", "Erica", "Laysa", "Lenice"]
 CLIENTES_POR_USUARIO = 15
 NUM_DIAS = 5
 DATA_INICIAL = date.today()
@@ -39,14 +39,31 @@ def atribuir_clientes():
         df = pd.read_parquet(CAMINHO_CLIENTES)
 
     # Validação das colunas
-    if 'codigo cliente' not in df.columns or 'status' not in df.columns or 'loja' not in df.columns:
-        raise ValueError("O DataFrame deve conter as colunas 'codigo cliente', 'status' e 'loja'")
+    colunas_necessarias = ['codigo cliente', 'status', 'loja', 'setor']
+    for col in colunas_necessarias:
+        if col not in df.columns:
+            raise ValueError(f"O DataFrame deve conter a coluna '{col}'")
 
     df['codigo_loja'] = df['codigo cliente'].astype(str) + '_' + df['loja'].astype(str)
-    df = df[['codigo_loja', 'status']].drop_duplicates()
+    df = df[['codigo_loja', 'status', 'setor']].drop_duplicates()
     df = df.sample(frac=1, random_state=42).reset_index(drop=True)
 
     print(f"📦 Total de clientes únicos disponíveis: {len(df)}")
+
+    # ==== CONFIGURAÇÃO DE USUÁRIOS POR SETOR FIXO ====
+    REGRAS_SETOR = {
+        "Laysa": [500, 506, 514, 511, 516, 509, 510],
+        "Lenice": [210, 239, 225, 242, 244]
+    }
+    USUARIOS_FIXOS = list(REGRAS_SETOR.keys())
+    USUARIOS_DISTRIBUICAO = [u for u in USUARIOS if u not in USUARIOS_FIXOS]
+
+    # Separa os clientes fixos por setor
+    clientes_atribuidos_setor = {}
+    for usuario, setores in REGRAS_SETOR.items():
+        clientes_usuario = df[df['setor'].isin(setores)].copy()
+        df = df[~df.index.isin(clientes_usuario.index)]  # remove os já atribuídos
+        clientes_atribuidos_setor[usuario] = clientes_usuario
 
     # Buscar arquivo de atribuições anteriores
     print("🔍 Verificando atribuições anteriores...")
@@ -67,13 +84,13 @@ def atribuir_clientes():
         print("📂 Nenhum histórico de atribuições encontrado. Iniciando novo.")
         clientes_atribuidos = {}
 
-    # Verificar se já foi feito hoje
+    # Verifica se já foi feito hoje
     ultima_data = max([date.fromisoformat(d) for d in clientes_atribuidos.keys()], default=None)
     if ultima_data and ultima_data >= date.today():
         print("✅ Atribuições já realizadas para hoje ou datas futuras.")
         return
 
-    # Filtrar clientes não atribuídos
+    # Filtra clientes já atribuídos anteriormente
     clientes_ja_atribuidos = set()
     for dia in clientes_atribuidos.values():
         for usuarios in dia.values():
@@ -83,7 +100,7 @@ def atribuir_clientes():
     clientes_disponiveis = df[~df['codigo_loja'].isin(clientes_ja_atribuidos)].copy()
     print(f"🆕 Clientes disponíveis para novas atribuições: {len(clientes_disponiveis)}")
 
-    # Realiza atribuição para os próximos dias
+    # Realiza atribuição por dia
     for i in range(NUM_DIAS):
         data_str = str(DATA_INICIAL + timedelta(days=i))
         if data_str in clientes_atribuidos:
@@ -92,7 +109,13 @@ def atribuir_clientes():
         clientes_atribuidos[data_str] = {}
         print(f"📅 Atribuindo clientes para o dia: {data_str}")
 
-        for usuario in USUARIOS:
+        # 1. Atribuição por setor fixo
+        for usuario in USUARIOS_FIXOS:
+            amostra = clientes_atribuidos_setor[usuario].copy()
+            clientes_atribuidos[data_str][usuario] = amostra.to_dict(orient='records')
+
+        # 2. Atribuição randômica para os demais
+        for usuario in USUARIOS_DISTRIBUICAO:
             if len(clientes_disponiveis) < CLIENTES_POR_USUARIO:
                 break
 
@@ -100,10 +123,11 @@ def atribuir_clientes():
             clientes_disponiveis = clientes_disponiveis.drop(amostra.index)
             clientes_atribuidos[data_str][usuario] = amostra.to_dict(orient='records')
 
-    # Salvar localmente
+    # Salva localmente
     with open(CAMINHO_JSON, "w") as f:
         json.dump(clientes_atribuidos, f, indent=4)
 
+    # Faz upload
     gdrive_client.upload_file(CAMINHO_JSON, pasta_atribuidos)
 
     print("✅ Atribuição concluída com sucesso!")
