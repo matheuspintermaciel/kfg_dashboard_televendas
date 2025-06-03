@@ -81,11 +81,11 @@ def atribuir_clientes(user_id=None):
         clientes_atribuidos = {}
 
     # ✅ Evita return precoce se estiver atribuindo só um usuário
-    if user_id is None:
-        ultima_data = max([date.fromisoformat(d) for d in clientes_atribuidos.keys()], default=None)
-        if ultima_data and ultima_data >= date.today():
-            print("✅ Atribuições já realizadas para hoje ou datas futuras.")
-            return
+    # if user_id is None:
+    #     ultima_data = max([date.fromisoformat(d) for d in clientes_atribuidos.keys()], default=None)
+    #     if ultima_data and ultima_data >= date.today():
+    #         print("✅ Atribuições já realizadas para hoje ou datas futuras.")
+    #         return
 
     clientes_ja_atribuidos = set()
     for dia in clientes_atribuidos.values():
