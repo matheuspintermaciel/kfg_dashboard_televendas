@@ -50,7 +50,7 @@ def atribuir_clientes(user_id=None):
     print(f"📦 Total de clientes únicos disponíveis: {len(df)}")
 
     REGRAS_SETOR = {
-        "Laysa": ['500', '501', '502', '503', '503', '505', '506', '507', '9910'],
+        "Laysa": ['500', '501', '502', '503', '503', '505', '506', '507'],
         "Lenice": ['210', '239', '225', '242', '244']
     }
     USUARIOS_FIXOS = list(REGRAS_SETOR.keys())
@@ -80,12 +80,12 @@ def atribuir_clientes(user_id=None):
         print("📂 Nenhum histórico de atribuições encontrado. Iniciando novo.")
         clientes_atribuidos = {}
 
-    # ✅ Evita return precoce se estiver atribuindo só um usuário
-    # if user_id is None:
-    #     ultima_data = max([date.fromisoformat(d) for d in clientes_atribuidos.keys()], default=None)
-    #     if ultima_data and ultima_data >= date.today():
-    #         print("✅ Atribuições já realizadas para hoje ou datas futuras.")
-    #         return
+    #✅ Evita return precoce se estiver atribuindo só um usuário
+    if user_id is None:
+        ultima_data = max([date.fromisoformat(d) for d in clientes_atribuidos.keys()], default=None)
+        if ultima_data and ultima_data >= date.today():
+            print("✅ Atribuições já realizadas para hoje ou datas futuras.")
+            return
 
     clientes_ja_atribuidos = set()
     for dia in clientes_atribuidos.values():
