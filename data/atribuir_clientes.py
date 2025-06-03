@@ -52,8 +52,8 @@ def atribuir_clientes():
 
     # ==== CONFIGURAÇÃO DE USUÁRIOS POR SETOR FIXO ====
     REGRAS_SETOR = {
-        "Laysa": [500, 506, 514, 511, 516, 509, 510],
-        "Lenice": [210, 239, 225, 242, 244]
+        "Laysa": ['500', '501', '502', '503', '503', '505', '506', '507', '9910'],
+        "Lenice": ['210', '239', '225', '242', '244']
     }
     USUARIOS_FIXOS = list(REGRAS_SETOR.keys())
     USUARIOS_DISTRIBUICAO = [u for u in USUARIOS if u not in USUARIOS_FIXOS]
