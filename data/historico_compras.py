@@ -12,7 +12,7 @@ def load_historico():
     
     # Define o ID da pasta e o nome do arquivo
     pasta_clientes = '1IeUISCB-lWQ5TWS5dykmpmMjK2W6CtLD'
-    base_clientes = 'vendas_mes_ano.parquet'
+    base_clientes = 'vendas_mes_ano_televendas.parquet'
 
     temp_data_path = 'temp_data'
     if not os.path.exists(temp_data_path):
@@ -39,19 +39,26 @@ def load_historico():
     }, inplace=True)
     df['Cliente_Codigo'] = df['Cliente_Codigo'].astype(str).str.strip()
     # Seleciona apenas as colunas de meses
+    colunas_erradas = [
+    col for col in df.columns
+    if col not in ['Cliente_Codigo', 'Loja', 'codigo', 'descrição']
+    ]
+    if colunas_erradas:
+        print("⚠️ Colunas ignoradas por formato inválido:", colunas_erradas)
     colunas_meses = [
         col for col in df.columns 
-        if col not in ['Cliente_Codigo', 'A1_LOJA', 'codigo', 'descrição']
+        if col not in ['Cliente_Codigo', 'Loja', 'codigo', 'descrição']
     ]
+    
 
-    # Ordena com base em datas reais
-    colunas_ordenadas = sorted(
-        colunas_meses, 
-        key=lambda x: datetime.strptime(x, "%m/%y")
-    )
+    # # Ordena com base em datas reais
+    # colunas_ordenadas = sorted(
+    #     colunas_meses, 
+    #     key=lambda x: datetime.strptime(x, "%m/%y")
+    # )
 
     # Reorganiza o DataFrame com as colunas ordenadas
-    df = df[['Cliente_Codigo', 'A1_LOJA', 'codigo', 'descrição'] + colunas_ordenadas]
+    df = df[['Cliente_Codigo', 'Loja', 'codigo', 'descrição'] + colunas_meses]
 
     print("Arquivo historico carregado com sucesso!")
     return df

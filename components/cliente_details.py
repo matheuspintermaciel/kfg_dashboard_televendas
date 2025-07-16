@@ -168,7 +168,7 @@ def criar_heatmap_dataframe(cliente_codigo, loja):
     try:
         cliente_data = dados_historico[ 
             (dados_historico['Cliente_Codigo'].astype(str) == str(cliente_codigo)) & 
-            (dados_historico['A1_LOJA'] == loja) 
+            (dados_historico['Loja'] == loja) 
         ].copy()
 
         if cliente_data.empty:
