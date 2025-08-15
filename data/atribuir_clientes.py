@@ -8,7 +8,7 @@ from config import GoogleDriveClient
 # ==== CONFIGURAÇÕES ====
 CAMINHO_CLIENTES = os.path.join("temp_data", "clientes_dash_televendas.parquet")
 CAMINHO_JSON = os.path.join("temp_data", "clientes_atribuidos.json")
-USUARIOS = ["Franciele", "Julia", "Erica", "Laysa", "Lenice"]
+USUARIOS = ["Todos","Franciele", "Julia", "Erica", "Laysa", "Lenice"]
 CLIENTES_POR_USUARIO = 15
 NUM_DIAS = 5
 DATA_INICIAL = date.today()
