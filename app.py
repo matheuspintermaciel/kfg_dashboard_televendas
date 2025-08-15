@@ -13,7 +13,7 @@ from login import login
 from data.load import load_data
 
 def app():
-    
+
     # Carregar os dados uma única vez, se ainda não estiver carregado
     if 'dados_clientes' not in st.session_state:
         print("Carregando dados")
