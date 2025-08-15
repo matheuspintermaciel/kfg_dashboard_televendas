@@ -65,7 +65,7 @@ def main(dados):
     clientes_atuais = []
     for data, atribuicao in clientes_atribuidos.items():
         if user_id in atribuicao:
-            print(user_id)
+            st.warning(user_id)
             clientes_atuais.extend([cliente['codigo_loja'] for cliente in atribuicao[user_id]])
 
     # Filtrando os dados para mostrar apenas os clientes atribuídos ao usuário
