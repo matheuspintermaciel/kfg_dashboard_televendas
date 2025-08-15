@@ -49,19 +49,22 @@ def atribuir_clientes(user_id=None):
 
     print(f"📦 Total de clientes únicos disponíveis: {len(df)}")
 
+    # Regras fixas
     REGRAS_SETOR = {
         "Laysa": ['500', '501', '502', '503', '503', '505', '506', '507'],
         "Lenice": ['210', '239', '225', '242', '244']
     }
     USUARIOS_FIXOS = list(REGRAS_SETOR.keys())
-    USUARIOS_DISTRIBUICAO = [u for u in USUARIOS if u not in USUARIOS_FIXOS]
+    USUARIOS_DISTRIBUICAO = [u for u in USUARIOS if u not in USUARIOS_FIXOS and u != "Todos"]
 
+    # Separa clientes por setor
     clientes_atribuidos_setor = {}
     for usuario, setores in REGRAS_SETOR.items():
         clientes_usuario = df[df['setor'].isin(setores)].copy()
         df = df[~df.index.isin(clientes_usuario.index)]
         clientes_atribuidos_setor[usuario] = clientes_usuario
 
+    # Histórico de atribuições
     print("🔍 Verificando atribuições anteriores...")
     arquivos_atribuidos = gdrive_client.list_files(folder_id=pasta_atribuidos)
     arquivos_filtrados = [
@@ -80,30 +83,36 @@ def atribuir_clientes(user_id=None):
         print("📂 Nenhum histórico de atribuições encontrado. Iniciando novo.")
         clientes_atribuidos = {}
 
-    #✅ Evita return precoce se estiver atribuindo só um usuário
+    # Evita rodar se já tem atribuição de hoje
     if user_id is None:
         ultima_data = max([date.fromisoformat(d) for d in clientes_atribuidos.keys()], default=None)
         if ultima_data and ultima_data >= date.today():
             print("✅ Atribuições já realizadas para hoje ou datas futuras.")
             return
 
+    # Remove clientes já atribuídos (menos para "Todos")
     clientes_ja_atribuidos = set()
     for dia in clientes_atribuidos.values():
         for usuarios in dia.values():
             for cliente in usuarios:
                 clientes_ja_atribuidos.add(cliente['codigo_loja'])
-
     clientes_disponiveis = df[~df['codigo_loja'].isin(clientes_ja_atribuidos)].copy()
     print(f"🆕 Clientes disponíveis para novas atribuições: {len(clientes_disponiveis)}")
 
+    # Loop de dias
     for i in range(NUM_DIAS):
         data_str = str(DATA_INICIAL + timedelta(days=i))
         if data_str not in clientes_atribuidos:
             clientes_atribuidos[data_str] = {}
         print(f"📅 Atribuindo clientes para o dia: {data_str}")
 
-        # Se user_id foi passado, reatribui apenas se estiver vazio
+        # Caso específico: apenas um user_id
         if user_id:
+            if user_id == "Todos":
+                # Sem filtro — pega base inteira
+                clientes_atribuidos[data_str][user_id] = df.to_dict(orient='records')
+                continue
+
             if user_id in clientes_atribuidos[data_str] and clientes_atribuidos[data_str][user_id]:
                 print(f"🔁 {user_id} já possui atribuições em {data_str}. Pulando...")
                 continue
@@ -120,12 +129,17 @@ def atribuir_clientes(user_id=None):
 
             clientes_atribuidos[data_str][user_id] = amostra.to_dict(orient='records')
 
-        # Atribuição normal, para todos os usuários
-        elif not user_id:
+        # Caso normal: todos usuários
+        else:
+            # Usuários fixos
             for usuario in USUARIOS_FIXOS:
                 amostra = clientes_atribuidos_setor[usuario].copy()
                 clientes_atribuidos[data_str][usuario] = amostra.to_dict(orient='records')
 
+            # "Todos" → base completa
+            clientes_atribuidos[data_str]["Todos"] = df.to_dict(orient='records')
+
+            # Demais usuários
             for usuario in USUARIOS_DISTRIBUICAO:
                 if len(clientes_disponiveis) < CLIENTES_POR_USUARIO:
                     break
@@ -133,6 +147,7 @@ def atribuir_clientes(user_id=None):
                 clientes_disponiveis = clientes_disponiveis.drop(amostra.index)
                 clientes_atribuidos[data_str][usuario] = amostra.to_dict(orient='records')
 
+    # Salva JSON
     with open(CAMINHO_JSON, "w") as f:
         json.dump(clientes_atribuidos, f, indent=4)
 
