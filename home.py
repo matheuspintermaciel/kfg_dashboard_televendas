@@ -61,14 +61,16 @@ def main(dados):
 
 
     dados = create_sidebar_filters(dados)
-    # Filtrando os clientes atribuídos para o usuário logado
-    clientes_atuais = []
-    for data, atribuicao in clientes_atribuidos.items():
-        if user_id in atribuicao:
-            clientes_atuais.extend([cliente['codigo_loja'] for cliente in atribuicao[user_id]])
-
-    # Filtrando os dados para mostrar apenas os clientes atribuídos ao usuário
-    dados_filtrados = dados[dados['codigo_loja'].isin(clientes_atuais)]
+    if user_id == "Todos":
+        # Mostra todos os clientes, sem filtrar
+        dados_filtrados = dados
+    else:
+        # Aplica filtro normal para o usuário específico
+        clientes_atuais = []
+        for data, atribuicao in clientes_atribuidos.items():
+            if user_id in atribuicao:
+                clientes_atuais.extend([cliente['codigo_loja'] for cliente in atribuicao[user_id]])
+        dados_filtrados = dados[dados['codigo_loja'].isin(clientes_atuais)]
 
     # Exibindo os dados filtrados na tabela
     display_data_table(dados_filtrados)

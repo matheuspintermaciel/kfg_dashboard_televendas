@@ -15,18 +15,18 @@ import streamlit as st
 # load_dotenv()
 
 google_credentials = {
-     "type": "service_account",
-     "project_id": st.secrets["google"]["GOOGLE_PROJECT_ID"],
-     "private_key_id": st.secrets["google"]["GOOGLE_PRIVATE_KEY_ID"],
-     "private_key": st.secrets["google"]["GOOGLE_PRIVATE_KEY"],
-     "client_email": st.secrets["google"]["GOOGLE_CLIENT_EMAIL"],
-     "client_id": st.secrets["google"]["GOOGLE_CLIENT_ID"],
-     "auth_uri": st.secrets["google"]["GOOGLE_AUTH_URI"],
-     "token_uri": st.secrets["google"]["GOOGLE_TOKEN_URI"],
-     "auth_provider_x509_cert_url": st.secrets["google"]["GOOGLE_AUTH_PROVIDER_X509_CERT_URL"],
-     "client_x509_cert_url": st.secrets["google"]["GOOGLE_CLIENT_X509_CERT_URL"],
-     "universe_domain": st.secrets["google"]["GOOGLE_UNIVERSE_DOMAIN"]
- }
+    "type": "service_account",
+    "project_id": st.secrets["google"]["GOOGLE_PROJECT_ID"],
+    "private_key_id": st.secrets["google"]["GOOGLE_PRIVATE_KEY_ID"],
+    "private_key": st.secrets["google"]["GOOGLE_PRIVATE_KEY"],
+    "client_email": st.secrets["google"]["GOOGLE_CLIENT_EMAIL"],
+    "client_id": st.secrets["google"]["GOOGLE_CLIENT_ID"],
+    "auth_uri": st.secrets["google"]["GOOGLE_AUTH_URI"],
+    "token_uri": st.secrets["google"]["GOOGLE_TOKEN_URI"],
+    "auth_provider_x509_cert_url": st.secrets["google"]["GOOGLE_AUTH_PROVIDER_X509_CERT_URL"],
+    "client_x509_cert_url": st.secrets["google"]["GOOGLE_CLIENT_X509_CERT_URL"],
+    "universe_domain": st.secrets["google"]["GOOGLE_UNIVERSE_DOMAIN"]
+}
 
 # google_credentials = {
 #     "type": "service_account",
@@ -41,7 +41,6 @@ google_credentials = {
 #     "client_x509_cert_url": os.getenv("GOOGLE_CLIENT_X509_CERT_URL"),
 #     "universe_domain": os.getenv("GOOGLE_UNIVERSE_DOMAIN")
 # }
-
 
 CAMINHO_JSON = "data/clientes_atribuidos.json"
 
@@ -106,7 +105,7 @@ class GoogleDriveClient:
         query_string = ' and '.join(q_parts)
         results = self.service.files().list(
             q=query_string,
-            pageSize=100,
+            pageSize=1000,
             fields="files(id, name, mimeType)"
         ).execute()
         return results.get('files', [])
